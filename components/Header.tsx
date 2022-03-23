@@ -36,7 +36,7 @@ export default function Header() {
 							))}
 						</div>
 					</div>
-					<div className="ml-10 space-x-4">
+					<div className="flex items-center ml-10 space-x-4">
 						{socialLinks.map((socialLink, index) => (
 							<SocialIcon
 								key={index}
