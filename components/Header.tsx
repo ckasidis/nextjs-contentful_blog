@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { FaInstagram, FaTelegram, FaDiscord } from 'react-icons/fa';
 import SocialIcon from './SocialIcon';
@@ -17,14 +18,14 @@ const socialLinks = [
 
 export default function Header() {
 	return (
-		<header className="bg-primary-600">
+		<header className="sticky top-0 left-0 z-10 bg-primary-600">
 			<nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Top">
 				<div className="w-full py-6 flex items-center justify-between border-b border-primary-500 lg:border-none">
 					<div className="flex items-center">
 						<Link href="/" passHref>
 							<a>
-								<span className="sr-only">Workflow</span>
-								<h1 className="text-white text-2xl">(Logo)</h1>
+								<span className="sr-only">NTUTH</span>
+								<Image src="/NTUTH.svg" width={80} height={16} alt="NTUTH" />
 							</a>
 						</Link>
 						<div className="hidden ml-10 space-x-6 lg:block">
