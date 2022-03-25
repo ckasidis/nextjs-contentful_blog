@@ -1,31 +1,31 @@
 import { GetServerSideProps, NextPage } from 'next';
 import Head from 'next/head';
-import { IGuide } from '../../@types/generated/contentful';
+import { IEvent } from '../../@types/generated/contentful';
 import PageNotFound from '../404';
 import Blog from '../../components/Blog';
 import ctfClient from '../../lib/contentful';
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 	const res = await ctfClient.getEntries({
-		content_type: 'guide',
+		content_type: 'event',
 		'fields.slug': params!.id,
 	});
 
 	return {
 		props: {
-			guide: res.items.length ? res.items[0] : null,
+			event: res.items.length ? res.items[0] : null,
 		},
 	};
 };
 
-interface GuideSingleProps {
-	guide: IGuide | null;
+interface EventSingleProps {
+	event: IEvent | null;
 }
 
-export default function GuideSingle({ guide }: GuideSingleProps) {
-	if (!guide) return <PageNotFound />;
+export default function EventSingle({ event }: EventSingleProps) {
+	if (!event) return <PageNotFound />;
 
-	const { title, featuredImage, mainContent, author } = guide.fields;
+	const { title, featuredImage, mainContent, author } = event.fields;
 
 	return (
 		<main>
@@ -33,12 +33,12 @@ export default function GuideSingle({ guide }: GuideSingleProps) {
 				<title>{title}</title>
 			</Head>
 			<Blog
-				category="guide"
+				category="event"
 				title={title}
 				image={featuredImage}
 				content={mainContent}
 				author={author}
-				dateTimeStr={guide.sys.updatedAt}
+				dateTimeStr={event.sys.updatedAt}
 			/>
 		</main>
 	);

@@ -23,7 +23,7 @@ export interface IEventFields {
   mainContent?: Document | undefined;
 
   /** Author */
-  author: IMember[];
+  author: IMember;
 }
 
 export interface IEvent extends Entry<IEventFields> {
@@ -60,7 +60,7 @@ export interface IGuideFields {
   mainContent?: Document | undefined;
 
   /** Author */
-  author: IMember[];
+  author: IMember;
 }
 
 export interface IGuide extends Entry<IGuideFields> {

@@ -3,43 +3,52 @@ import { Asset } from 'contentful';
 import { IMember } from '../@types/generated/contentful';
 import { Document } from '@contentful/rich-text-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import AuthorList from './AuthorList';
+import AuthorBox from './AuthorBox';
+import Link from 'next/link';
 
 interface BlogProps {
+	category: string;
 	title: string;
-	author: IMember[];
 	image: Asset;
 	description?: string;
 	content: Document | undefined;
-	category: string;
+	author: IMember | undefined;
+	dateTimeStr: string;
 }
 
 export default function Blog({
+	category,
 	title,
-	author,
 	image,
 	description,
 	content,
-	category,
+	author,
+	dateTimeStr,
 }: BlogProps) {
+	const dateTime = new Date(dateTimeStr);
 	return (
 		<div className="relative py-16 bg-white overflow-hidden">
 			{blogDecoration}
 			<div className="relative px-4 sm:px-6 lg:px-8">
 				<div className="text-lg max-w-prose mx-auto">
 					<h1>
-						<span className="block text-base text-center text-primary-600 font-semibold tracking-wide uppercase">
-							{category}
+						<span className="block text-base text-center text-secondary-700 font-semibold tracking-wide uppercase">
+							<Link href={`/${category}`}>{category}</Link>
 						</span>
 						<span className="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
 							{title}
 						</span>
 					</h1>
+					<time dateTime={dateTime.toISOString()}>
+						<span className="mt-2 block text-sm text-center leading-8 text-gray-500">
+							last updated: {dateTime.toISOString().substring(0, 10)}
+						</span>
+					</time>
 					<figure className="my-6">
 						<Image
-							className="bg-cover rounded-xl"
+							className="object-cover rounded-lg"
 							src={'http:' + image.fields.file.url}
-							width={1080}
+							width={1280}
 							height={720}
 							alt={image.fields.title}
 						/>
@@ -54,13 +63,9 @@ export default function Blog({
 				<div className="mt-6 prose prose-primary prose-lg text-gray-500 mx-auto">
 					{content && <>{documentToReactComponents(content)}</>}
 				</div>
-				<div className="text-lg max-w-prose mx-auto">
-					{description && (
-						<p className="mt-8 text-xl text-gray-500 leading-8">
-							{description}
-						</p>
-					)}
-					<AuthorList author={author} />
+				<div className="text-lg max-w-prose mt-12 mx-auto">
+					{/* <h3 className="mb-6 font-semibold">Author</h3> */}
+					{author && <AuthorBox author={author} />}
 				</div>
 			</div>
 		</div>
