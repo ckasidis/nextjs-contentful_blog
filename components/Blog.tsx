@@ -27,7 +27,7 @@ export default function Blog({
 }: BlogProps) {
 	const dateTime = new Date(dateTimeStr);
 	return (
-		<div className="relative py-16 bg-white overflow-hidden">
+		<div className="relative py-16 overflow-hidden">
 			{blogDecoration}
 			<div className="relative px-4 sm:px-6 lg:px-8">
 				<div className="text-lg max-w-prose mx-auto">
