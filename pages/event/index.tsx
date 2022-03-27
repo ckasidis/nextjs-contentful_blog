@@ -4,7 +4,7 @@ import { IEvent, IGuide } from '../../@types/generated/contentful';
 import BlogCard from '../../components/BlogCard';
 import Link from 'next/link';
 import SectionTitle from '../../components/SectionTitle';
-import BlogGrid from '../../components/BlogGrid';
+import Grid from '../../components/Grid';
 import GridSection from '../../components/GridSection';
 
 export const getServerSideProps: GetServerSideProps = async () => {
@@ -31,7 +31,7 @@ export default function HomePage({ events }: HomePageProps) {
 				title="Events"
 				description="Join events hosted by our society"
 			/>
-			<BlogGrid>
+			<Grid>
 				{events.map((event) => (
 					<Link
 						key={event.fields.title}
@@ -49,7 +49,7 @@ export default function HomePage({ events }: HomePageProps) {
 						</a>
 					</Link>
 				))}
-			</BlogGrid>
+			</Grid>
 		</GridSection>
 	);
 }

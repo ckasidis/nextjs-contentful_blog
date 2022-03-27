@@ -5,7 +5,7 @@ import BlogCard from '../components/BlogCard';
 import Link from 'next/link';
 import HeaderSection from '../components/HeaderSection';
 import SectionTitle from '../components/SectionTitle';
-import BlogGrid from '../components/BlogGrid';
+import Grid from '../components/Grid';
 import GridSection from '../components/GridSection';
 
 export const getServerSideProps: GetServerSideProps = async () => {
@@ -46,7 +46,7 @@ export default function HomePage({ guides, events }: HomePageProps) {
 					title="Guides"
 					description="Find useful guides about NTU and Singapore"
 				/>
-				<BlogGrid>
+				<Grid>
 					{guides.map((guide) => (
 						<Link
 							key={guide.fields.title}
@@ -64,14 +64,14 @@ export default function HomePage({ guides, events }: HomePageProps) {
 							</a>
 						</Link>
 					))}
-				</BlogGrid>
+				</Grid>
 			</GridSection>
 			<GridSection>
 				<SectionTitle
 					title="Events"
 					description="Join events hosted by our society"
 				/>
-				<BlogGrid>
+				<Grid>
 					{events.map((event) => (
 						<Link
 							key={event.fields.title}
@@ -89,7 +89,7 @@ export default function HomePage({ guides, events }: HomePageProps) {
 							</a>
 						</Link>
 					))}
-				</BlogGrid>
+				</Grid>
 			</GridSection>
 		</>
 	);

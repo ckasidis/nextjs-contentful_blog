@@ -4,7 +4,7 @@ import { IGuide } from '../../@types/generated/contentful';
 import BlogCard from '../../components/BlogCard';
 import Link from 'next/link';
 import SectionTitle from '../../components/SectionTitle';
-import BlogGrid from '../../components/BlogGrid';
+import Grid from '../../components/Grid';
 import GridSection from '../../components/GridSection';
 
 export const getServerSideProps: GetServerSideProps = async () => {
@@ -31,7 +31,7 @@ export default function GuideArchive({ guides }: GuideArchiveProps) {
 				title="Guides"
 				description="Find useful guides about NTU and Singapore"
 			/>
-			<BlogGrid>
+			<Grid>
 				{guides.map((guide) => (
 					<Link
 						key={guide.fields.title}
@@ -49,7 +49,7 @@ export default function GuideArchive({ guides }: GuideArchiveProps) {
 						</a>
 					</Link>
 				))}
-			</BlogGrid>
+			</Grid>
 		</GridSection>
 	);
 }
