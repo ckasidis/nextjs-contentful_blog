@@ -20,7 +20,7 @@ export default function BlogCard({
 	author,
 }: BlogCardProps) {
 	return (
-		<div className="flex flex-col rounded-lg shadow-lg overflow-hidden">
+		<div className="flex flex-col rounded-lg shadow-lg overflow-hidden bg-white">
 			<div className="flex-shrink-0">
 				<Image
 					className="object-cover"
@@ -30,9 +30,9 @@ export default function BlogCard({
 					height={360}
 				/>
 			</div>
-			<div className="flex-1 bg-white p-6 flex flex-col justify-between">
+			<div className="flex-1 p-6 flex flex-col justify-between">
 				<div className="flex-1">
-					<p className="text-sm font-medium text-indigo-600">
+					<p className="text-sm font-medium text-secondary-700">
 						<Link href={`/${category}`}>{category.toUpperCase()}</Link>
 					</p>
 					<div className="block mt-2">
