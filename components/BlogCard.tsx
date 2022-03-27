@@ -25,7 +25,7 @@ export default function BlogCard({
 				<Image
 					className="object-cover"
 					src={'http:' + image.fields.file.url}
-					alt=""
+					alt={image.fields.title}
 					width={640}
 					height={360}
 				/>
