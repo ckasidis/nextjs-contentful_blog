@@ -7,7 +7,7 @@ const navigation = [
 	{ name: 'Events', href: '/event' },
 	{ name: 'Guides', href: '/guide' },
 	{ name: 'Members', href: '/member' },
-	{ name: 'About', href: '/about' },
+	// { name: 'About', href: '/about' },
 ];
 
 const socialLinks = [
