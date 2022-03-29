@@ -7,6 +7,7 @@ import HeaderSection from '../components/HeaderSection';
 import SectionTitle from '../components/SectionTitle';
 import Grid from '../components/Grid';
 import GridSection from '../components/GridSection';
+import Head from 'next/head';
 
 export const getServerSideProps: GetServerSideProps = async () => {
 	const guideRes = await ctfClient.getEntries({
@@ -37,6 +38,9 @@ interface HomePageProps {
 export default function HomePage({ guides, events }: HomePageProps) {
 	return (
 		<>
+			<Head>
+				<title>Home</title>
+			</Head>
 			<HeaderSection
 				title="Welcome to NTU Thai Society"
 				description="Nanyang Technology University, Singapore"

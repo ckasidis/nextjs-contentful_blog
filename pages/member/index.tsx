@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { IMember } from '../../@types/generated/contentful';
 import Grid from '../../components/Grid';
 import GridSection from '../../components/GridSection';
@@ -23,16 +24,21 @@ interface MemberArchiveProps {
 
 export default function MemberArchive({ members }: MemberArchiveProps) {
 	return (
-		<GridSection>
-			<SectionTitle
-				title="Members"
-				description="Current NTU students and Alumni"
-			/>
-			<Grid>
-				{members.map((member) => (
-					<MemberCard key={member.fields.fullname} member={member} />
-				))}
-			</Grid>
-		</GridSection>
+		<>
+			<Head>
+				<title>Members</title>
+			</Head>
+			<GridSection>
+				<SectionTitle
+					title="Members"
+					description="Current NTU students and Alumni"
+				/>
+				<Grid>
+					{members.map((member) => (
+						<MemberCard key={member.fields.fullname} member={member} />
+					))}
+				</Grid>
+			</GridSection>
+		</>
 	);
 }

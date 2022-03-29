@@ -6,6 +6,7 @@ import Link from 'next/link';
 import SectionTitle from '../../components/SectionTitle';
 import Grid from '../../components/Grid';
 import GridSection from '../../components/GridSection';
+import Head from 'next/head';
 
 export const getServerSideProps: GetServerSideProps = async () => {
 	const eventRes = await ctfClient.getEntries({
@@ -20,36 +21,41 @@ export const getServerSideProps: GetServerSideProps = async () => {
 	};
 };
 
-interface HomePageProps {
+interface EventArchiveProps {
 	events: IEvent[];
 }
 
-export default function HomePage({ events }: HomePageProps) {
+export default function EventArchive({ events }: EventArchiveProps) {
 	return (
-		<GridSection>
-			<SectionTitle
-				title="Events"
-				description="Join events hosted by our society"
-			/>
-			<Grid>
-				{events.map((event) => (
-					<Link
-						key={event.fields.title}
-						href={`/event/${event.fields.slug}`}
-						passHref
-					>
-						<a>
-							<BlogCard
-								image={event.fields.featuredImage}
-								category="event"
-								title={event.fields.title}
-								description={event.fields.shortDescription}
-								author={event.fields.author}
-							/>
-						</a>
-					</Link>
-				))}
-			</Grid>
-		</GridSection>
+		<>
+			<Head>
+				<title>Events</title>
+			</Head>
+			<GridSection>
+				<SectionTitle
+					title="Events"
+					description="Join events hosted by our society"
+				/>
+				<Grid>
+					{events.map((event) => (
+						<Link
+							key={event.fields.title}
+							href={`/event/${event.fields.slug}`}
+							passHref
+						>
+							<a>
+								<BlogCard
+									image={event.fields.featuredImage}
+									category="event"
+									title={event.fields.title}
+									description={event.fields.shortDescription}
+									author={event.fields.author}
+								/>
+							</a>
+						</Link>
+					))}
+				</Grid>
+			</GridSection>
+		</>
 	);
 }
