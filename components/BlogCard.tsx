@@ -1,6 +1,7 @@
 import { Asset } from 'contentful';
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import { IMember } from '../@types/generated/contentful';
 import AuthorBox from './AuthorBox';
 
@@ -20,7 +21,11 @@ export default function BlogCard({
 	author,
 }: BlogCardProps) {
 	return (
-		<div className="flex flex-col rounded-lg shadow-lg overflow-hidden bg-white">
+		<motion.div
+			whileHover={{ scale: 1.02 }}
+			whileTap={{ scale: 0.98 }}
+			className="flex flex-col rounded-lg shadow-lg overflow-hidden bg-white"
+		>
 			<div className="flex-shrink-0">
 				<Image
 					className="object-cover"
@@ -42,6 +47,6 @@ export default function BlogCard({
 				</div>
 				<AuthorBox author={author} />
 			</div>
-		</div>
+		</motion.div>
 	);
 }
