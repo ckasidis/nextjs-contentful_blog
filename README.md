@@ -1,4 +1,4 @@
-# A Blog for NTU Thai Society
+# A Blog Template
 ### made with
 - Next.js with SSR for dynamic blog content
 - Contentful as Headless CMS
